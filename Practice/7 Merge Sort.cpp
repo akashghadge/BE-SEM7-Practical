@@ -1,17 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-void mergeSort(int a[], int p, int r)
-{
-    int q;
-    if (p < r)
-    {
-        q = (p + r) / 2;
-        mergeSort(a, p, q);
-        mergeSort(a, q + 1, r);
-        merge(a, p, q, r);
-    }
-}
-
 void merge(int a[], int p, int q, int r)
 {
     int b[5]; // same size of a[]
@@ -32,6 +20,18 @@ void merge(int a[], int p, int q, int r)
     for (i = r; i >= p; i--)
         a[i] = b[--k]; // copying back the sorted list to a[]
 }
+void mergeSort(int a[], int p, int r)
+{
+    int q;
+    if (p < r)
+    {
+        q = (p + r) / 2;
+        mergeSort(a, p, q);
+        mergeSort(a, q + 1, r);
+        merge(a, p, q, r);
+    }
+}
+
 
 // function to print the array
 void printArray(int a[], int size)
